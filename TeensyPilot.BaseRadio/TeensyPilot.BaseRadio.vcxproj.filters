@@ -15,11 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="TeensyPilot.ino" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="__vm\.TeensyPilot.vsarduino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="TeensyPilot.BaseRadio.ino" />
   </ItemGroup>
 </Project>
