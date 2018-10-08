@@ -17,4 +17,9 @@
   <ItemGroup>
     <None Include="TeensyPilot.BaseRadio.ino" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\.TeensyPilot.BaseRadio.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
