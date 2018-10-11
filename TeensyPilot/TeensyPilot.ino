@@ -7,9 +7,10 @@
 #include <SPI.h>
 #include <RH_RF95.h>
 #include <MahonyAHRS.h>
+//#include <Adafruit_AHRS\Madgwick.h>
 
 // Serial debug
-//#define SERIAL_DEBUG
+#define SERIAL_DEBUG
 
 #ifdef SERIAL_DEBUG
 #define PLN(x) (Serial.println(x))
@@ -48,13 +49,38 @@ Adafruit_LSM303_Mag_Unified   mag(30302);
 Adafruit_BMP085_Unified       bmp(18001);
 
 Mahony filter;
+//Madgwick filter;
 
 // Data types
-union imuPacket
+
+// a*: accel in m/s
+// r*: rotation in rad/s
+// attitude in degrees
+// temp in celsius
+// altitude in m
+struct imuData
 {
-	float imuDat[5];
-	uint8_t bytes[20];
+	float ax;
+	float ay;
+	float az;
+	float rx;
+	float ry;
+	float rz;
+	float pitch;
+	float roll;
+	float yaw;
+	float temperature;
+	float altitude;
 };
+
+union radioPacket
+{
+	imuData dat;
+	uint8_t bytes[RH_RF95_MAX_MESSAGE_LEN];
+};
+
+// Prototypes
+void GetIMUData(imuData& dat);
 
 void setup()
 {
@@ -76,10 +102,11 @@ void setup()
 
 void loop()
 {
-	imuPacket imu;
-	GetIMUData(imu.imuDat);
+	radioPacket imu;
+	imuData dat;
+	GetIMUData(dat);
 
-	Transmit(imu.bytes, 20);
+	Transmit(imu.bytes, 44);
 }
 
 void InitRadio()
@@ -176,7 +203,7 @@ uint8_t* Receive()
 	}
 }
 
-void GetIMUData(float *dat)
+void GetIMUData(imuData& dat)
 {
 	sensors_event_t gyro_event;
 	sensors_event_t accel_event;
@@ -218,25 +245,39 @@ void GetIMUData(float *dat)
 			temperature);
 	}
 
-	float roll = filter.getRoll();
-	float pitch = filter.getPitch();
-	float heading = filter.getYaw();
-
-	dat[0] = heading;
-	dat[1] = pitch;
-	dat[2] = roll;
-	dat[3] = temperature;
-	dat[4] = altitude;
+	dat.pitch = filter.getPitch();
+	dat.roll = filter.getRoll();
+	dat.yaw = filter.getYaw();
+	dat.ax = accel_event.acceleration.x;
+	dat.ay = accel_event.acceleration.y;
+	dat.az = accel_event.acceleration.z;
+	dat.rx = gyro_event.acceleration.x;
+	dat.ry = gyro_event.acceleration.y;
+	dat.rz = gyro_event.acceleration.z;
+	dat.temperature = temperature;
+	dat.altitude = altitude;
 
 	P(millis());
 	P(F(" - H:"));
-	P(heading);
+	P(dat.yaw);
 	P(F(" P:"));
-	P(pitch);
+	P(dat.pitch);
 	P(F(" R:"));
-	P(roll);
+	P(dat.roll);
 	P(F(" T:"));
-	P(temperature);
+	P(dat.temperature);
 	P(F(" A:"));
-	PLN(altitude);
+	P(dat.altitude);
+	P(F(" aX:"));
+	P(dat.ax);
+	P(F(" aY:"));
+	P(dat.ay);
+	P(F(" aZ:"));
+	P(dat.az);
+	P(F(" rX:"));
+	P(dat.rx);
+	P(F(" rY:"));
+	P(dat.ry);
+	P(F(" rZ:"));
+	PLN(dat.rz);
 }
