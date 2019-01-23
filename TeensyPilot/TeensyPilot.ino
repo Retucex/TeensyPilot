@@ -22,6 +22,9 @@
 #define P(x)
 #endif
 
+// CSV Output
+bool csvHeader;
+
 // Radio
 // Pins
 #define RFM95_CS 10
@@ -66,11 +69,16 @@ struct imuData
 	float rx;
 	float ry;
 	float rz;
+	float mx;
+	float my;
+	float mz;
 	float pitch;
 	float roll;
 	float yaw;
 	float temperature;
 	float altitude;
+	float pressure;
+	uint32_t millis;
 };
 
 union radioPacket
@@ -96,6 +104,8 @@ void setup()
 	InitRadio();
 	InitSensors();
 
+	csvHeader = false;
+
 	// Stabilize
 	delay(100);
 }
@@ -106,7 +116,7 @@ void loop()
 	imuData dat;
 	GetIMUData(dat);
 
-	Transmit(imu.bytes, 44);
+	//Transmit(imu.bytes, 44);
 }
 
 void InitRadio()
@@ -254,30 +264,57 @@ void GetIMUData(imuData& dat)
 	dat.rx = gyro_event.acceleration.x;
 	dat.ry = gyro_event.acceleration.y;
 	dat.rz = gyro_event.acceleration.z;
+	dat.mx = mag_event.magnetic.x;
+	dat.my = mag_event.magnetic.y;
+	dat.mz = mag_event.magnetic.z;
 	dat.temperature = temperature;
 	dat.altitude = altitude;
+	dat.pressure = bmp_event.pressure;
+	dat.millis = millis();
 
-	P(millis());
-	P(F(" - H:"));
-	P(dat.yaw);
-	P(F(" P:"));
-	P(dat.pitch);
-	P(F(" R:"));
-	P(dat.roll);
-	P(F(" T:"));
-	P(dat.temperature);
-	P(F(" A:"));
-	P(dat.altitude);
-	P(F(" aX:"));
-	P(dat.ax);
-	P(F(" aY:"));
-	P(dat.ay);
-	P(F(" aZ:"));
-	P(dat.az);
-	P(F(" rX:"));
-	P(dat.rx);
-	P(F(" rY:"));
-	P(dat.ry);
-	P(F(" rZ:"));
-	PLN(dat.rz);
+	//P(millis());
+	//P(F(" - H:"));
+	//P(dat.yaw);
+	//P(F(" P:"));
+	//P(dat.pitch);
+	//P(F(" R:"));
+	//P(dat.roll);
+	//P(F(" T:"));
+	//P(dat.temperature);
+	//P(F(" A:"));
+	//P(dat.altitude);
+	//P(F(" aX:"));
+	//P(dat.ax);
+	//P(F(" aY:"));
+	//P(dat.ay);
+	//P(F(" aZ:"));
+	//P(dat.az);
+	//P(F(" rX:"));
+	//P(dat.rx);
+	//P(F(" rY:"));
+	//P(dat.ry);
+	//P(F(" rZ:"));
+	//PLN(dat.rz);
+
+	if (!csvHeader)
+	{
+		csvHeader = true;
+		PLN(F("millis,ax,ay,az,rx,ry,rz,mx,my,mz,pitch,roll,yaw,altitude,pressure,temperature"));
+	}
+	P(dat.millis); P(F(","));
+	P(dat.ax); P(F(","));
+	P(dat.ay); P(F(","));
+	P(dat.az); P(F(","));
+	P(dat.rx); P(F(","));
+	P(dat.ry); P(F(","));
+	P(dat.rz); P(F(","));
+	P(dat.mx); P(F(","));
+	P(dat.my); P(F(","));
+	P(dat.mz); P(F(","));
+	P(dat.pitch); P(F(","));
+	P(dat.roll); P(F(","));
+	P(dat.yaw); P(F(","));
+	P(dat.altitude); P(F(","));
+	P(dat.pressure); P(F(","));
+	PLN(dat.temperature);
 }
