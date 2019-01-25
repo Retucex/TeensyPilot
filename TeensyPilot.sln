@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLib", "..\HelperLib\H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeensyPilot.SerialTransceiver", "TeensyPilot.SerialTransceiver\TeensyPilot.SerialTransceiver.csproj", "{4AACCE57-1B55-4191-A70F-80B8B515B89C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeensyPilot.Tests", "TeensyPilot.Tests\TeensyPilot.Tests.csproj", "{FE715363-0FB1-4519-B65C-0F58577A6F39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,14 @@ Global
 		{4AACCE57-1B55-4191-A70F-80B8B515B89C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4AACCE57-1B55-4191-A70F-80B8B515B89C}.Release|x86.ActiveCfg = Release|Any CPU
 		{4AACCE57-1B55-4191-A70F-80B8B515B89C}.Release|x86.Build.0 = Release|Any CPU
+		{FE715363-0FB1-4519-B65C-0F58577A6F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE715363-0FB1-4519-B65C-0F58577A6F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE715363-0FB1-4519-B65C-0F58577A6F39}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FE715363-0FB1-4519-B65C-0F58577A6F39}.Debug|x86.Build.0 = Debug|Any CPU
+		{FE715363-0FB1-4519-B65C-0F58577A6F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE715363-0FB1-4519-B65C-0F58577A6F39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE715363-0FB1-4519-B65C-0F58577A6F39}.Release|x86.ActiveCfg = Release|Any CPU
+		{FE715363-0FB1-4519-B65C-0F58577A6F39}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

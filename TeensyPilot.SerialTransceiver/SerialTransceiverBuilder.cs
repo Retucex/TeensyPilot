@@ -15,6 +15,8 @@ namespace TeensyPilot.SerialTransceiver
 		int portDataBits;
 		StopBits portStopBits;
 		Handshake portHandshake;
+		int portReadTimeout;
+		int portWriteTimeout;
 
 		public SerialTransceiverBuilder()
 		{
@@ -25,6 +27,8 @@ namespace TeensyPilot.SerialTransceiver
 			portDataBits = serialPort.DataBits;
 			portStopBits = serialPort.StopBits;
 			portHandshake = serialPort.Handshake;
+			portReadTimeout = serialPort.ReadTimeout;
+			portWriteTimeout = serialPort.WriteTimeout;
 		}
 
 		public SerialTransceiverBuilder PortName(string portName)
@@ -63,6 +67,18 @@ namespace TeensyPilot.SerialTransceiver
 			return this;
 		}
 
+		public SerialTransceiverBuilder PortReadTimeout(int portReadTimeout)
+		{
+			this.portReadTimeout = portReadTimeout;
+			return this;
+		}
+
+		public SerialTransceiverBuilder PortWriteimeout(int portWriteTimeout)
+		{
+			this.portWriteTimeout = portWriteTimeout;
+			return this;
+		}
+
 		public static implicit operator SerialTransceiver(SerialTransceiverBuilder b)
 		{
 			return new SerialTransceiver(
@@ -71,7 +87,9 @@ namespace TeensyPilot.SerialTransceiver
 				b.parity,
 				b.portDataBits,
 				b.portStopBits,
-				b.portHandshake);
+				b.portHandshake,
+				b.portReadTimeout,
+				b.portWriteTimeout);
 		}
 	}
 }
