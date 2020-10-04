@@ -9,17 +9,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TeensyPilot.BaseRadio", "Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeensyPilot.CommandCenter", "TeensyPilot.CommandCenter\TeensyPilot.CommandCenter.csproj", "{883C454C-C8FF-42CE-A7C9-7E67557FB407}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ahrs_calibration", "..\..\..\Documents\Arduino\My Examples\ahrs_calibration\ahrs_calibration.vcxproj", "{D04992A7-E75A-4AA9-812F-B3977EFFF37E}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ahrs_mahony", "..\..\..\Documents\Arduino\My Examples\ahrs_mahony\ahrs_mahony.vcxproj", "{F2E2C855-8886-41A3-B115-03A8CBE11588}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLib", "..\HelperLib\HelperLib\HelperLib.csproj", "{4D9FA165-C67B-44B9-83B9-42FCCBA0D99A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeensyPilot.SerialTransceiver", "TeensyPilot.SerialTransceiver\TeensyPilot.SerialTransceiver.csproj", "{4AACCE57-1B55-4191-A70F-80B8B515B89C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeensyPilot.Tests", "TeensyPilot.Tests\TeensyPilot.Tests.csproj", "{FE715363-0FB1-4519-B65C-0F58577A6F39}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sketch1", "Sketch1\Sketch1.vcxproj", "{AD992051-9165-4CE1-83B9-825DCFEA4B56}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ESCProgrammer", "Sketch1\Sketch1.vcxproj", "{AD992051-9165-4CE1-83B9-825DCFEA4B56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,26 +43,6 @@ Global
 		{883C454C-C8FF-42CE-A7C9-7E67557FB407}.Release|Any CPU.Build.0 = Release|Any CPU
 		{883C454C-C8FF-42CE-A7C9-7E67557FB407}.Release|x86.ActiveCfg = Release|Any CPU
 		{883C454C-C8FF-42CE-A7C9-7E67557FB407}.Release|x86.Build.0 = Release|Any CPU
-		{D04992A7-E75A-4AA9-812F-B3977EFFF37E}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{D04992A7-E75A-4AA9-812F-B3977EFFF37E}.Debug|x86.ActiveCfg = Debug|Win32
-		{D04992A7-E75A-4AA9-812F-B3977EFFF37E}.Debug|x86.Build.0 = Debug|Win32
-		{D04992A7-E75A-4AA9-812F-B3977EFFF37E}.Release|Any CPU.ActiveCfg = Release|Win32
-		{D04992A7-E75A-4AA9-812F-B3977EFFF37E}.Release|x86.ActiveCfg = Release|Win32
-		{D04992A7-E75A-4AA9-812F-B3977EFFF37E}.Release|x86.Build.0 = Release|Win32
-		{F2E2C855-8886-41A3-B115-03A8CBE11588}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{F2E2C855-8886-41A3-B115-03A8CBE11588}.Debug|x86.ActiveCfg = Debug|Win32
-		{F2E2C855-8886-41A3-B115-03A8CBE11588}.Debug|x86.Build.0 = Debug|Win32
-		{F2E2C855-8886-41A3-B115-03A8CBE11588}.Release|Any CPU.ActiveCfg = Release|Win32
-		{F2E2C855-8886-41A3-B115-03A8CBE11588}.Release|x86.ActiveCfg = Release|Win32
-		{F2E2C855-8886-41A3-B115-03A8CBE11588}.Release|x86.Build.0 = Release|Win32
-		{4D9FA165-C67B-44B9-83B9-42FCCBA0D99A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D9FA165-C67B-44B9-83B9-42FCCBA0D99A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D9FA165-C67B-44B9-83B9-42FCCBA0D99A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4D9FA165-C67B-44B9-83B9-42FCCBA0D99A}.Debug|x86.Build.0 = Debug|Any CPU
-		{4D9FA165-C67B-44B9-83B9-42FCCBA0D99A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D9FA165-C67B-44B9-83B9-42FCCBA0D99A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D9FA165-C67B-44B9-83B9-42FCCBA0D99A}.Release|x86.ActiveCfg = Release|Any CPU
-		{4D9FA165-C67B-44B9-83B9-42FCCBA0D99A}.Release|x86.Build.0 = Release|Any CPU
 		{4AACCE57-1B55-4191-A70F-80B8B515B89C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4AACCE57-1B55-4191-A70F-80B8B515B89C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AACCE57-1B55-4191-A70F-80B8B515B89C}.Debug|x86.ActiveCfg = Debug|Any CPU
