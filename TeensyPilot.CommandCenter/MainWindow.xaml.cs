@@ -21,13 +21,14 @@ namespace TeensyPilot.CommandCenter
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		SerialTransceiver.SerialTransceiver serialTransceiver;
+		private SerialTransceiver.SerialTransceiver serialTransceiver;
+
 		public MainWindow()
 		{
 			InitializeComponent();
 
 			serialTransceiver = new SerialTransceiverBuilder()
-				.PortName("COM4")
+				.PortName("COM6")
 				.BaudRate(115200);
 
 			var t = (TextBox)FindName("DebugTextBox");
